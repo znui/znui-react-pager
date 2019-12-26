@@ -1,0 +1,1 @@
+# znui-react-pager
