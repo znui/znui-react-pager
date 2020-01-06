@@ -1,0 +1,20 @@
+@color: #616161;
+@active-color: #696969;
+@disable-color: #c7c7c7;
+.zr-page{
+    padding: 3px 6px;
+    text-align: center;
+    color: @disable-color;
+    border-radius: 3px;
+    &.enabled{
+        color: @color;
+        cursor: pointer !important;
+        &:hover{
+            opacity: 0.6;
+        }
+    }
+    &.active{
+        background-color: @active-color;
+        color: #FFF;
+    }
+}

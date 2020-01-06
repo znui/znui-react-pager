@@ -1,0 +1,31 @@
+@color: #616161;
+@active-color: #696969;
+@disable-color: #c7c7c7;
+.zr-pager{
+    overflow: hidden;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    color: @color;
+    .pages {
+        list-style-type: none;
+        display: inline-block;
+        vertical-align: middle;
+        padding: 0px;
+        margin: 0px;
+        &>li {
+            display: inline-block;
+            cursor: default;
+        }
+    }
+
+    .number{
+        .count-number, .page-number{
+            border: 1px solid @color;
+            border-radius: 3px;
+            margin: 0px 5px;
+            padding: 2px 4px;
+        }
+    }
+
+}
