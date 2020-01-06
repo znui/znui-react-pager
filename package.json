@@ -1,6 +1,6 @@
 {
   "name": "znui-react-pager",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Web pager component.",
   "main": "development.js",
   "scripts": {
@@ -26,6 +26,6 @@
   "license": "MIT",
   "dependencies": {
     "znui-react": "^1.3.5",
-    "znui-react-icon": "^1.0.4"
+    "znui-react-icon": "^1.0.5"
   }
 }

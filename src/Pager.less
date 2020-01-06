@@ -9,7 +9,8 @@
     color: @color;
     .pages {
         list-style-type: none;
-        display: inline-block;
+        display: flex;
+        flex-direction: row;
         vertical-align: middle;
         padding: 0px;
         margin: 0px;
@@ -20,8 +21,11 @@
     }
 
     .number{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         .count-number, .page-number{
-            border: 1px solid @color;
+            display: inline-block;
             border-radius: 3px;
             margin: 0px 5px;
             padding: 2px 4px;

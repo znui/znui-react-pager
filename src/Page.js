@@ -13,7 +13,7 @@ module.exports = React.createClass({
 			return null;
 		}
 		return (
-			<li onClick={this.__onClick} className={'zr-page ' + (this.props.className||'') + ' '+ (this.props.isActive?"active":"") + ' '+ (this.props.isDisabled?"":"enabled")}>
+			<li onClick={this.__onClick} className={'zr-pager-page ' + (this.props.className||'') + ' '+ (this.props.isActive?"active":"") + ' '+ (this.props.isDisabled?"":"enabled")}>
 				{this.props.children}
 			</li>
 		);

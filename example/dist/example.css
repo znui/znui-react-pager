@@ -1,17 +1,17 @@
-.zr-page {
+.zr-pager-page {
   padding: 3px 6px;
   text-align: center;
   color: #c7c7c7;
   border-radius: 3px;
 }
-.zr-page.enabled {
+.zr-pager-page.enabled {
   color: #616161;
   cursor: pointer !important;
 }
-.zr-page.enabled:hover {
+.zr-pager-page.enabled:hover {
   opacity: 0.6;
 }
-.zr-page.active {
+.zr-pager-page.active {
   background-color: #696969;
   color: #FFF;
 }
@@ -24,7 +24,8 @@
 }
 .zr-pager .pages {
   list-style-type: none;
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
   vertical-align: middle;
   padding: 0px;
   margin: 0px;
@@ -33,9 +34,14 @@
   display: inline-block;
   cursor: default;
 }
+.zr-pager .number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .zr-pager .number .count-number,
 .zr-pager .number .page-number {
-  border: 1px solid #616161;
+  display: inline-block;
   border-radius: 3px;
   margin: 0px 5px;
   padding: 2px 4px;
@@ -75,7 +81,8 @@
 }
 .zr-simple-pager .pages {
   list-style-type: none;
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
   vertical-align: middle;
   padding: 0px;
   margin: 0px;
@@ -84,9 +91,14 @@
   display: inline-block;
   cursor: default;
 }
+.zr-simple-pager .number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .zr-simple-pager .number .count-number,
 .zr-simple-pager .number .page-number {
-  border: 1px solid #616161;
+  display: inline-block;
   border-radius: 3px;
   margin: 0px 5px;
   padding: 2px 4px;

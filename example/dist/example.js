@@ -51018,7 +51018,7 @@ module.exports = React.createClass({
 
     return React.createElement("li", {
       onClick: this.__onClick,
-      className: 'zr-page ' + (this.props.className || '') + ' ' + (this.props.isActive ? "active" : "") + ' ' + (this.props.isDisabled ? "" : "enabled")
+      className: 'zr-pager-page ' + (this.props.className || '') + ' ' + (this.props.isActive ? "active" : "") + ' ' + (this.props.isDisabled ? "" : "enabled")
     }, this.props.children);
   }
 });
@@ -51411,9 +51411,7 @@ module.exports = React.createClass({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-if (!znui || !znui.react) {
-  __webpack_require__(/*! znui-react */ "../node_modules/znui-react/development.js");
-}
+__webpack_require__(/*! znui-react */ "../node_modules/znui-react/development.js");
 
 module.exports = {
   'Page': __webpack_require__(/*! ./Page */ "../src/Page.js"),

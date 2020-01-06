@@ -18,7 +18,7 @@ module.exports = React.createClass({
 
     return React.createElement("li", {
       onClick: this.__onClick,
-      className: 'zr-page ' + (this.props.className || '') + ' ' + (this.props.isActive ? "active" : "") + ' ' + (this.props.isDisabled ? "" : "enabled")
+      className: 'zr-pager-page ' + (this.props.className || '') + ' ' + (this.props.isActive ? "active" : "") + ' ' + (this.props.isDisabled ? "" : "enabled")
     }, this.props.children);
   }
 });
