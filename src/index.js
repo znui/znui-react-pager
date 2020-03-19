@@ -1,7 +1,7 @@
-require('znui-react');
 module.exports = {
-    'Page': require('./Page'),
-    'Pager': require('./Pager'),
-    'PagerView': require('./PagerView'),
-    'SimplePager': require('./SimplePager')
+    Page: require('./Page'),
+    Pager: require('./Pager'),
+    PagerBar: require('./PagerBar'),
+    PagerView: require('./PagerView'),
+    SimplePager: require('./SimplePager')
 };

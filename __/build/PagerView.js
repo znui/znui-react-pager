@@ -4,7 +4,7 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 var React = znui.React || require('react');
 
-var PagerView = React.createClass({
+module.exports = React.createClass({
   displayName: 'PagerView',
   getDefaultProps: function getDefaultProps() {
     return {
@@ -61,7 +61,7 @@ var PagerView = React.createClass({
   render: function render() {
     var _this = this;
 
-    var View = PagerView.getKey(this.props.view);
+    var View = zn.path(window, this.props.view);
 
     if (!View) {
       return null;
@@ -91,5 +91,3 @@ var PagerView = React.createClass({
     })));
   }
 });
-znui.react.generateRegister(PagerView);
-module.exports = PagerView;

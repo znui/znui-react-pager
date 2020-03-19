@@ -1,6 +1,7 @@
 var React = znui.React || require('react');
+var Pager = require('./Pager');
 
-var PagerView = React.createClass({
+module.exports = React.createClass({
     displayName: 'PagerView',
     getDefaultProps: function (){
         return {
@@ -52,7 +53,7 @@ var PagerView = React.createClass({
 		});
 	},
     render: function (){
-		var View = PagerView.getKey(this.props.view);
+		var View = zn.path(window, this.props.view);
 		if(!View){
 			return null;
 		}
@@ -72,7 +73,3 @@ var PagerView = React.createClass({
 		);
     }
 });
-
-znui.react.generateRegister(PagerView);
-
-module.exports = PagerView;
