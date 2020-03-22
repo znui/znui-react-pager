@@ -16,7 +16,7 @@ module.exports = React.createClass({
       return null;
     }
 
-    return React.createElement("li", {
+    return /*#__PURE__*/React.createElement("li", {
       onClick: this.__onClick,
       className: 'zr-pager-page ' + (this.props.className || '') + ' ' + (this.props.isActive ? "active" : "") + ' ' + (this.props.isDisabled ? "" : "enabled")
     }, this.props.children);

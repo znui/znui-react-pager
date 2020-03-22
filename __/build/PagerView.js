@@ -4,6 +4,8 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 var React = znui.React || require('react');
 
+var Pager = require('./Pager');
+
 module.exports = React.createClass({
   displayName: 'PagerView',
   getDefaultProps: function getDefaultProps() {
@@ -67,12 +69,12 @@ module.exports = React.createClass({
       return null;
     }
 
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: znui.react.classname("zr-pager-view", this.props.className),
       "data-fixed": this.props.dataFixed
-    }, React.createElement("div", {
+    }, /*#__PURE__*/React.createElement("div", {
       className: "view-content"
-    }, React.createElement(View, _extends({}, this.props, {
+    }, /*#__PURE__*/React.createElement(View, _extends({}, this.props, {
       onCallReset: function onCallReset() {
         return _this.setState({
           current: 1
@@ -80,9 +82,9 @@ module.exports = React.createClass({
       },
       className: this.props.viewClassName,
       dataHandler: this.__dataHandler
-    }))), React.createElement("div", {
+    }))), /*#__PURE__*/React.createElement("div", {
       className: "view-pager"
-    }, React.createElement(Pager, {
+    }, /*#__PURE__*/React.createElement(Pager, {
       total: this.state.total,
       count: this.state.count,
       current: this.state.current,

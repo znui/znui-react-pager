@@ -52,39 +52,39 @@ module.exports = React.createClass({
     return this.props.current >= this.props.total;
   },
   render: function render() {
-    return React.createElement("nav", {
+    return /*#__PURE__*/React.createElement("nav", {
       className: "zr-simple-pager " + this.props.className
-    }, React.createElement("ul", {
+    }, /*#__PURE__*/React.createElement("ul", {
       className: "pages"
-    }, this.props.icons['first'] && React.createElement(Page, {
+    }, this.props.icons['first'] && /*#__PURE__*/React.createElement(Page, {
       className: "btn-first-page",
       isDisabled: this.isPrevDisabled(),
       onClick: this.handleFirstPage
-    }, React.createElement(SVGIcon, {
+    }, /*#__PURE__*/React.createElement(SVGIcon, {
       icon: this.props.icons['first']
-    })), this.props.icons['prev'] && React.createElement(Page, {
+    })), this.props.icons['prev'] && /*#__PURE__*/React.createElement(Page, {
       className: "btn-prev-page",
       isDisabled: this.isPrevDisabled(),
       onClick: this.handlePreviousPage
-    }, React.createElement(SVGIcon, {
+    }, /*#__PURE__*/React.createElement(SVGIcon, {
       icon: this.props.icons['prev']
-    })), React.createElement("li", {
+    })), /*#__PURE__*/React.createElement("li", {
       className: "number"
-    }, !!this.props.total && React.createElement("span", {
+    }, !!this.props.total && /*#__PURE__*/React.createElement("span", {
       className: "page-number"
-    }, this.props.current, " / ", this.props.total, " ", this.props.texts.page), !!this.props.count && React.createElement("span", {
+    }, this.props.current, " / ", this.props.total, " ", this.props.texts.page), !!this.props.count && /*#__PURE__*/React.createElement("span", {
       className: "count-number"
-    }, this.props.count, " ", this.props.texts.record)), this.props.icons['next'] && React.createElement(Page, {
+    }, this.props.count, " ", this.props.texts.record)), this.props.icons['next'] && /*#__PURE__*/React.createElement(Page, {
       className: "btn-next-page",
       isDisabled: this.isNextDisabled(),
       onClick: this.handleNextPage
-    }, React.createElement(SVGIcon, {
+    }, /*#__PURE__*/React.createElement(SVGIcon, {
       icon: this.props.icons['next']
-    })), this.props.icons['last'] && React.createElement(Page, {
+    })), this.props.icons['last'] && /*#__PURE__*/React.createElement(Page, {
       className: "btn-last-page",
       isDisabled: this.isNextDisabled(),
       onClick: this.handleLastPage
-    }, React.createElement(SVGIcon, {
+    }, /*#__PURE__*/React.createElement(SVGIcon, {
       icon: this.props.icons['last']
     }))));
   }

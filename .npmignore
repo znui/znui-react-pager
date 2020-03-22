@@ -2,9 +2,8 @@
 .DS_Store
 .git
 example/*
-node_modules/*
 src/*
-example/*
+node_modules/*
 __/development.js
 __/production.js
 .babelrc

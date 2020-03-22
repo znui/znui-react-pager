@@ -107,7 +107,7 @@ module.exports = React.createClass({
     return range(pair[0], pair[1]).map(function (pageIndex, index) {
       var _this = this;
 
-      return React.createElement(Page, {
+      return /*#__PURE__*/React.createElement(Page, {
         key: index,
         isActive: this.props.current === pageIndex,
         className: "btn-numbered-page",
@@ -118,51 +118,51 @@ module.exports = React.createClass({
     }.bind(this));
   },
   render: function render() {
-    return React.createElement("nav", {
+    return /*#__PURE__*/React.createElement("nav", {
       className: "zr-pager " + this.props.className
-    }, React.createElement("ul", {
+    }, /*#__PURE__*/React.createElement("ul", {
       className: "pages"
-    }, this.props.icons['first'] && React.createElement(Page, {
+    }, this.props.icons['first'] && /*#__PURE__*/React.createElement(Page, {
       className: "btn-first-page",
       isDisabled: this.isPrevDisabled(),
       onClick: this.handleFirstPage
-    }, React.createElement(SVGIcon, {
+    }, /*#__PURE__*/React.createElement(SVGIcon, {
       icon: this.props.icons['first']
-    })), this.props.icons['prev'] && React.createElement(Page, {
+    })), this.props.icons['prev'] && /*#__PURE__*/React.createElement(Page, {
       className: "btn-prev-page",
       isDisabled: this.isPrevDisabled(),
       onClick: this.handlePreviousPage
-    }, React.createElement(SVGIcon, {
+    }, /*#__PURE__*/React.createElement(SVGIcon, {
       icon: this.props.icons['prev']
-    })), this.props.icons['prevSet'] && React.createElement(Page, {
+    })), this.props.icons['prevSet'] && /*#__PURE__*/React.createElement(Page, {
       className: "btn-prev-more",
       isHidden: this.isPrevMoreHidden(),
       onClick: this.handleMorePrevPages
-    }, React.createElement(SVGIcon, {
+    }, /*#__PURE__*/React.createElement(SVGIcon, {
       icon: this.props.icons['prevSet']
-    })), this.renderPages(this.visibleRange()), this.props.icons['nextSet'] && React.createElement(Page, {
+    })), this.renderPages(this.visibleRange()), this.props.icons['nextSet'] && /*#__PURE__*/React.createElement(Page, {
       className: "btn-next-more",
       isHidden: this.isNextMoreHidden(),
       onClick: this.handleMoreNextPages
-    }, React.createElement(SVGIcon, {
+    }, /*#__PURE__*/React.createElement(SVGIcon, {
       icon: this.props.icons['nextSet']
-    })), this.props.icons['next'] && React.createElement(Page, {
+    })), this.props.icons['next'] && /*#__PURE__*/React.createElement(Page, {
       className: "btn-next-page",
       isDisabled: this.isNextDisabled(),
       onClick: this.handleNextPage
-    }, React.createElement(SVGIcon, {
+    }, /*#__PURE__*/React.createElement(SVGIcon, {
       icon: this.props.icons['next']
-    })), this.props.icons['last'] && React.createElement(Page, {
+    })), this.props.icons['last'] && /*#__PURE__*/React.createElement(Page, {
       className: "btn-last-page",
       isDisabled: this.isNextDisabled(),
       onClick: this.handleLastPage
-    }, React.createElement(SVGIcon, {
+    }, /*#__PURE__*/React.createElement(SVGIcon, {
       icon: this.props.icons['last']
-    }))), React.createElement("div", {
+    }))), /*#__PURE__*/React.createElement("div", {
       className: "number"
-    }, !!this.props.total && React.createElement("span", {
+    }, !!this.props.total && /*#__PURE__*/React.createElement("span", {
       className: "page-number"
-    }, this.props.current, " / ", this.props.total, " ", this.props.texts.page), !!this.props.count && React.createElement("span", {
+    }, this.props.current, " / ", this.props.total, " ", this.props.texts.page), !!this.props.count && /*#__PURE__*/React.createElement("span", {
       className: "count-number"
     }, this.props.count, " ", this.props.texts.record)));
   }

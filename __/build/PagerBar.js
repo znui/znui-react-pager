@@ -12,7 +12,7 @@ module.exports = React.createClass({
     this.props.onClick && this.props.onClick();
   },
   render: function render() {
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: 'zr-pager-bar ' + (this.props.className || '') + ' ' + (this.props.isActive ? "active" : "") + ' ' + (this.props.isDisabled ? "" : "enabled")
     }, this.props.children);
   }
