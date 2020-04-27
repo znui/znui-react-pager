@@ -1,5 +1,6 @@
 var React = znui.React || require('react');
 var Pager = require('./Pager');
+var loader = require('znui-react-loader');
 
 module.exports = React.createClass({
     displayName: 'PagerView',
@@ -13,63 +14,107 @@ module.exports = React.createClass({
     },
     getInitialState: function (){
         return {
-			total: 0,
+			data: [],
 			count: 0,
-			current: this.props.pageIndex
+			pageIndex: this.props.pageIndex
         };
     },
     __handlePageChanged: function (newPage){
 		var _return = this.props.onPageChanged && this.props.onPageChanged(newPage, this);
 		if(_return !== false) {
-			if(this.props.data){
-				if(this.props.data._argv) {
-					this.props.data._argv.data.pageIndex = newPage;
-				}
-				this.props.data.refresh();
-			}
-
-			this.setState({
-				current: newPage
-			});
-		}
-	},
-	__dataHandler: function (data){
-		var _return = this.props.onPagerDataHandler && this.props.onPagerDataHandler(data, this);
-		if(_return !== false) {
-			if(data.result[1] && data.result[1][0]){
-				this.setCount(data.result[1][0]);
-			}
+			this.setPageIndex(newPage);
 		}
 	},
 	setPageIndex: function (pageIndex){
-		this.setState({
-			current: pageIndex
-		});
-	},
-	setCount: function (count){
-		this.setState({
-			count: count,
-			total: Math.ceil( count / this.props.pageSize)
-		});
-	},
-    render: function (){
-		var View = zn.path(window, this.props.view);
-		if(!View){
-			return null;
+		if(this.data){
+			this.state.pageIndex = pageIndex;
+			this.data.refresh();
 		}
-        return (
-			<div className={znui.react.classname("zr-pager-view", this.props.className)} data-fixed={this.props.dataFixed}>
-				<div className="view-content">
-					<View {...this.props} onCallReset={()=>this.setState({current: 1})} className={this.props.viewClassName} dataHandler={this.__dataHandler} />
-				</div>
+	},
+	calculateCount: function (total, size){
+		var _count = parseInt(total/size);
+        if((total%size)>0){
+            _count += 1;
+        }
+
+        return _count;
+	},
+	__viewRender: function (response){
+		var _view = znui.react.createReactElement(this.props.view || this.props.viewRender, zn.extend({
+			response: response,
+			pagerView: this
+		}, this.state));
+		return <div className="view-content">{_view}</div>;
+	},
+	__onDataLoaded: function (data){
+		var _return = this.props.dataHandler && this.props.dataHandler(data, this);
+		if(_return !== false) {
+			if(typeof _return == 'object'){
+				this.setState(_return);
+			}else{
+				//TODO: 
+			}
+		}
+	},
+	__onDataLoading: function (data, lifycycle){
+		var _method = data.method||'post',
+			_params = {},
+			_keyMaps = zn.deepAssign({
+				total: "total",
+				pageIndex: 'pageIndex',
+				pageSize: 'pageSize',
+				data: 'data'
+			}, this.props.keyMaps);
+
+
+		_params[_keyMaps.pageIndex] = this.state.pageIndex || 1;
+		_params[_keyMaps.pageSize] = this.props.pageSize || 10;
+
+		if(_method == 'get'){
+			data = zn.deepAssign(data, {
+				params: _params
+			});
+		}else{
+			data = zn.deepAssign(data, {
+				data: _params
+			});
+		}
+		this.state.keyMaps = _keyMaps;
+
+		return data;
+	},
+	__onDataCreated: function (data, lifycycle){
+		this.data = data;
+		this.props.onDataCreated && this.props.onDataCreated(data, this);
+	},
+	__loadingRender: function (){
+		return <loader.DataLoader loader="wave" title='Loading...' />;
+	},
+	render: function(){
+		return (
+			<div className={znui.react.classname("zr-pager-view", this.props.className)} 
+				style={znui.react.style(this.props.style)}
+				data-fixed={this.props.dataFixed}>
+				{
+					this.props.data && <znui.react.DataLifecycle 
+											data={this.props.data}
+											render={this.__viewRender} 
+											loadingRender={()=>this.__loadingRender()}
+											onLoading={this.__onDataLoading}
+											onDataCreated={this.__onDataCreated}
+											onFinished={this.__onDataLoaded} />
+				}
 				<div className="view-pager">
-					<Pager total={this.state.total}
+					<Pager total={Math.ceil(this.state.count/this.props.pageSize)}
 						count={this.state.count}
-						current={this.state.current}
-						visiblePages={this.props.visiblePage}
+						current={this.state.pageIndex}
+						pageSize={this.props.pageSize}
+						visiblePages={this.props.visiblePages}
 						onPageChanged={this.__handlePageChanged} />
 				</div>
 			</div>
 		);
-    }
+		
+		return 
+	}
 });
