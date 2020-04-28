@@ -14,8 +14,10 @@ module.exports = React.createClass({
     },
     getInitialState: function (){
         return {
-			data: [],
 			count: 0,
+			current: 1,
+			data: [],
+			total: 0,
 			pageIndex: this.props.pageIndex
         };
     },
@@ -30,14 +32,6 @@ module.exports = React.createClass({
 			this.state.pageIndex = pageIndex;
 			this.data.refresh();
 		}
-	},
-	calculateCount: function (total, size){
-		var _count = parseInt(total/size);
-        if((total%size)>0){
-            _count += 1;
-        }
-
-        return _count;
 	},
 	__viewRender: function (response){
 		var _view = znui.react.createReactElement(this.props.view || this.props.viewRender, zn.extend({
@@ -114,7 +108,5 @@ module.exports = React.createClass({
 				</div>
 			</div>
 		);
-		
-		return 
 	}
 });
