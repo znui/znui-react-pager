@@ -7,7 +7,8 @@ module.exports = require(_path + 'znui-react/webpack').component.development(fun
             "react": "React",
             "react-dom": "ReactDOM",
             "znui-react": "zr",
-            "znui-react-icon": "icon"
+            "znui-react-icon": "icon",
+            "znui-react-loader": "loader"
         }
     };
 });
