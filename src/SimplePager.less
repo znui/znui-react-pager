@@ -17,9 +17,12 @@
         &>li {
             display: inline-block;
             cursor: default;
-            width: 13px;
+            min-width: 16px;
             height: 16px;
-            line-height: 16px;
+            .icon{
+                width: 16px;
+                height: 16px;
+            }
         }
     }
 
@@ -27,6 +30,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        width: auto !important;
+        line-height: 24px;
         .count-number, .page-number{
             display: inline-block;
             border-radius: 3px;

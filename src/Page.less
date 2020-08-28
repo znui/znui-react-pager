@@ -2,12 +2,15 @@
 @active-color: #696969;
 @disable-color: #c7c7c7;
 .zr-pager-page{
-    padding: 3px 6px;
+    padding: 2px 4px;
+    margin: 2px;
     text-align: center;
     color: @disable-color;
-    border-radius: 3px;
+    border: 1px solid @disable-color;
+    border-radius: 2px;
     &.enabled{
         color: @color;
+        border: 1px solid @color;
         cursor: pointer !important;
         &:hover{
             opacity: 0.6;

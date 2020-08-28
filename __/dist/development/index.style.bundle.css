@@ -1,11 +1,14 @@
 .zr-pager-page {
-  padding: 3px 6px;
+  padding: 2px 4px;
+  margin: 2px;
   text-align: center;
   color: #c7c7c7;
-  border-radius: 3px;
+  border: 1px solid #c7c7c7;
+  border-radius: 2px;
 }
 .zr-pager-page.enabled {
   color: #616161;
+  border: 1px solid #616161;
   cursor: pointer !important;
 }
 .zr-pager-page.enabled:hover {
@@ -33,9 +36,13 @@
 .zr-pager .pages > li {
   display: inline-block;
   cursor: default;
-  width: 13px;
+  min-width: 16px;
   height: 16px;
   line-height: 16px;
+}
+.zr-pager .pages > li .icon {
+  width: 16px;
+  height: 16px;
 }
 .zr-pager .number {
   display: flex;
@@ -90,14 +97,19 @@
 .zr-simple-pager .pages > li {
   display: inline-block;
   cursor: default;
-  width: 13px;
+  min-width: 16px;
   height: 16px;
-  line-height: 16px;
+}
+.zr-simple-pager .pages > li .icon {
+  width: 16px;
+  height: 16px;
 }
 .zr-simple-pager .number {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: auto !important;
+  line-height: 24px;
 }
 .zr-simple-pager .number .count-number,
 .zr-simple-pager .number .page-number {
