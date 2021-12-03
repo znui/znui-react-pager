@@ -14,6 +14,35 @@ function range(start, end) {
   return res;
 }
 
+var Select = React.createClass({
+  displayName: 'PagerSelect',
+  getDefaultProps: function getDefaultProps() {
+    return {};
+  },
+  getInitialState: function getInitialState() {
+    return {};
+  },
+  __onSelectChange: function __onSelectChange(event) {
+    this.props.onChange && this.props.onChange(event);
+  },
+  render: function render() {
+    return /*#__PURE__*/React.createElement("select", {
+      className: znui.react.classname("page-size-select", this.props.className, this.state.className),
+      style: znui.react.style({}, this.props.style),
+      value: this.props.value,
+      onChange: this.__onSelectChange,
+      onClick: this.__onSelectClick
+    }, /*#__PURE__*/React.createElement("option", {
+      value: "",
+      disabled: true
+    }, this.props.placeholder), this.props.data.map(function (value, index) {
+      return /*#__PURE__*/React.createElement("option", {
+        key: index,
+        value: value
+      }, value);
+    }));
+  }
+});
 module.exports = React.createClass({
   displayName: 'Pager',
   getDefaultProps: function getDefaultProps() {
@@ -30,7 +59,9 @@ module.exports = React.createClass({
     };
   },
   getInitialState: function getInitialState() {
-    return {};
+    return {
+      activePage: this.props.activePage
+    };
   },
   handleFirstPage: function handleFirstPage() {
     if (this.isPrevDisabled()) return;
@@ -56,6 +87,11 @@ module.exports = React.createClass({
     this.handlePageChanged(blocks.current * blocks.size + 1);
   },
   handlePageChanged: function handlePageChanged(pageIndex) {
+    if (this.state.activePage == pageIndex) {
+      return;
+    }
+
+    this.state.activePage = pageIndex;
     this.props.onPageChanged && this.props.onPageChanged(pageIndex);
   },
   calcBlocks: function calcBlocks() {
@@ -235,6 +271,10 @@ module.exports = React.createClass({
       className: "page-number"
     }, this.props.current, " / ", this.props.total, " ", this.props.texts.page), !!this.props.count && /*#__PURE__*/React.createElement("span", {
       className: "count-number"
-    }, this.props.count, " ", this.props.texts.record)));
+    }, this.props.count, " ", this.props.texts.record)), !!this.props.count && /*#__PURE__*/React.createElement(Select, {
+      value: this.props.pageSize,
+      data: [5, 10, 20, 50, 100, 200, 500, 1000],
+      onChange: this.props.onPageSizeChange
+    }));
   }
 });

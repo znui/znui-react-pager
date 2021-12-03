@@ -10,6 +10,42 @@ function range ( start, end ) {
     return res;
 }
 
+var Select = React.createClass({
+	displayName:'PagerSelect',
+	getDefaultProps: function (){
+		return {
+            
+		};
+	},
+	getInitialState: function (){
+		return {
+            
+		}
+	},
+    __onSelectChange: function (event){
+        this.props.onChange && this.props.onChange(event);
+    },
+    render: function (){
+        return (
+            <select
+				className={znui.react.classname("page-size-select", this.props.className, this.state.className)}
+				style={znui.react.style({}, this.props.style)}
+				value={this.props.value}
+				onChange={this.__onSelectChange}
+				onClick={this.__onSelectClick}>
+				<option value='' disabled>{this.props.placeholder}</option>
+				{
+                    this.props.data.map(function (value, index){
+                        return (
+                            <option key={index} value={value}>{value}</option>
+                        );
+                    })
+                }
+			</select>
+        );
+    }
+});
+
 module.exports = React.createClass({
 	displayName:'Pager',
 	getDefaultProps: function (){
@@ -27,7 +63,7 @@ module.exports = React.createClass({
 	},
 	getInitialState: function (){
 		return {
-
+            activePage: this.props.activePage
 		}
 	},
 	handleFirstPage: function () {
@@ -57,6 +93,10 @@ module.exports = React.createClass({
     },
 
     handlePageChanged: function ( pageIndex ) {
+        if(this.state.activePage == pageIndex){
+            return;
+        }
+        this.state.activePage = pageIndex;
 		this.props.onPageChanged && this.props.onPageChanged(pageIndex);
     },
 
@@ -175,6 +215,9 @@ module.exports = React.createClass({
                     { !!this.props.total && (<span className="page-number">{this.props.current} / {this.props.total} {this.props.texts.page}</span>) }
 				    { !!this.props.count && (<span className="count-number">{this.props.count} {this.props.texts.record}</span>) }
                 </div>
+                {
+                    !!this.props.count && <Select value={this.props.pageSize} data={[5, 10, 20, 50, 100, 200, 500, 1000]} onChange={this.props.onPageSizeChange} />
+                }
 			</nav>
 		);
 	}
