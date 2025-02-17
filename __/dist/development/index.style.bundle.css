@@ -37,7 +37,6 @@
   display: inline-block;
   cursor: default;
   min-width: 16px;
-  height: 16px;
   line-height: 16px;
 }
 .zr-pager .pages > li .icon {
